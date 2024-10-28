@@ -1,6 +1,6 @@
 import express from 'express';
 
-import userControllers from '../controllers/user.js';
+import userControllers from '../controllers/userControllers.js';
 
 const { register, login, logout } = userControllers;
 
