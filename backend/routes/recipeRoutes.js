@@ -1,5 +1,6 @@
 import express from 'express';
 
+import verifyToken from '../middleware/verifyToken.js';
 import recipeControllers from '../controllers/recipeControllers.js';
 
 const { getAllRecipes, getRecipe, addRecipe, updateRecipe, deleteRecipe } =
@@ -10,8 +11,8 @@ const router = express.Router();
 // routes
 router.get('/recipes', getAllRecipes);
 router.get('/recipes/:id', getRecipe);
-router.post('/recipes', addRecipe);
-router.put('/recipes/:id', updateRecipe);
-router.delete('/recipes/:id', deleteRecipe);
+router.post('/recipes', verifyToken, addRecipe);
+router.put('/recipes/:id', verifyToken, updateRecipe);
+router.delete('/recipes/:id', verifyToken, deleteRecipe);
 
 export default router;
